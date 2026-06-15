@@ -9,7 +9,7 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background: linear-gradient(135deg, #0b1020, #111827, #0f172a);
+background: linear-gradient(135deg, #0b1020, #111827, #1e1b4b);
 color:#e5e7eb;
 }
 
@@ -22,9 +22,9 @@ box-shadow:0 10px 40px rgba(0,0,0,0.6);
 }
 
 header h1{
-font-size:44px;
+font-size:42px;
 margin:0;
-text-shadow:0 0 15px #8b5cf6;
+color:white;
 }
 
 header p{
@@ -40,7 +40,6 @@ padding:20px;
 border-radius:20px;
 width:92%;
 max-width:950px;
-backdrop-filter: blur(10px);
 box-shadow:0 10px 30px rgba(0,0,0,0.5);
 transition:0.3s;
 }
@@ -54,39 +53,24 @@ h2{
 color:#a78bfa;
 }
 
-/* BOXES */
+/* TRICK BOX */
 div{
 background: rgba(139,92,246,0.08);
 border-left:4px solid #8b5cf6;
 padding:12px;
 margin:10px 0;
 border-radius:12px;
-transition:0.3s;
-}
-
-div:hover{
-transform:translateX(6px);
-background: rgba(139,92,246,0.15);
-}
-
-/* INPUT */
-input{
-padding:12px;
-border-radius:10px;
-border:none;
-width:220px;
 }
 
 /* BUTTON */
 button{
-padding:10px 16px;
+padding:10px 15px;
 border:none;
 border-radius:10px;
 background:#7c3aed;
 color:white;
 cursor:pointer;
-transition:0.2s;
-margin-top:6px;
+margin:5px 0;
 }
 
 button:hover{
@@ -94,10 +78,17 @@ background:#6d28d9;
 transform:scale(1.05);
 }
 
+/* INPUT */
+input{
+padding:10px;
+border-radius:8px;
+border:none;
+width:220px;
+}
+
 /* QUIZ UI */
 #options button{
 display:block;
-margin:6px 0;
 width:100%;
 text-align:left;
 }
@@ -118,6 +109,7 @@ margin-top:30px;
 background:#0b1020;
 border-top:1px solid #2d2d3a;
 }
+
 </style>
 
 </head>
@@ -129,55 +121,47 @@ border-top:1px solid #2d2d3a;
 <p>Learn Smart • Think Fast • Grow Strong</p>
 </header>
 
-<!-- MISSION -->
 <section>
 <h2>📚 Our Mission</h2>
-<p>Free STEM education with tricks, formulas and practice quizzes.</p>
+<p>Free STEM education for every student.</p>
 </section>
 
-<!-- MATH TRICKS (EXPANDED) -->
 <section>
 <h2>🧠 Math Tricks</h2>
-
 <div>23 × 11 = 253</div>
 <div>45 × 11 = 495</div>
 <div>99² = 9801</div>
 <div>101² = 10201</div>
 <div>125 × 8 = 1000</div>
-<div>50% = 1/2, 25% = 1/4, 20% = 1/5</div>
-<div>Multiply by 9: 7×9 = 63</div>
-<div>Square ending 5: 75² = 5625</div>
-<div>Cube trick: 10³ = 1000</div>
-
+<div>75² = 5625</div>
+<div>7 × 9 = 63</div>
 </section>
 
-<!-- DIFFERENTIATION (EXPANDED) -->
 <section>
 <h2>📘 Differentiation Formulas</h2>
-
 <div>d(x^n)/dx = n·x^(n-1)</div>
 <div>d(sin x)/dx = cos x</div>
 <div>d(cos x)/dx = -sin x</div>
 <div>d(tan x)/dx = sec²x</div>
 <div>d(e^x)/dx = e^x</div>
-<div>d(a^x)/dx = a^x ln a</div>
 <div>d(ln x)/dx = 1/x</div>
 <div>d(uv) = u dv + v du</div>
-<div>d(u/v) = (v du - u dv)/v²</div>
-
 </section>
 
-<!-- SCIENCE -->
 <section>
 <h2>🔬 Science</h2>
-<div>Physics: F = ma</div>
-<div>Energy: E = mc²</div>
-<div>Ohm’s Law: V = IR</div>
+<div>F = ma</div>
+<div>E = mc²</div>
+<div>V = IR</div>
 </section>
 
-<!-- QUIZ -->
 <section>
-<h2>🧠 Advanced Quiz</h2>
+<h2>👨‍💻 Founder</h2>
+<p>Bhuwan Singh Rajawat</p>
+</section>
+
+<section>
+<h2>🧠 Quiz (Pro Mode)</h2>
 
 <p id="question">Loading...</p>
 
@@ -193,7 +177,6 @@ border-top:1px solid #2d2d3a;
 © 2026 STEM For All
 </footer>
 
-<!-- SOUND -->
 <audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
 <audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
 
@@ -202,17 +185,17 @@ border-top:1px solid #2d2d3a;
 let quiz = [
 {
 q:"d(x²)/dx = ?",
-options:["2x","x²","1/x","x"],
+options:["2x","x²","x","1/x"],
 answer:"2x"
 },
 {
 q:"d(sin x)/dx = ?",
-options:["-sin x","cos x","sin x","tan x"],
+options:["cos x","-sin x","sin x","tan x"],
 answer:"cos x"
 },
 {
 q:"99² = ?",
-options:["9801","9900","9800","9701"],
+options:["9801","9900","9700","9604"],
 answer:"9801"
 },
 {
@@ -222,7 +205,7 @@ answer:"1000"
 },
 {
 q:"d(ln x)/dx = ?",
-options:["x","1/x","ln x","0"],
+options:["1/x","x","ln x","0"],
 answer:"1/x"
 }
 ];
@@ -248,16 +231,15 @@ next();
 }
 
 function load(){
-let qObj=quiz[i];
-document.getElementById("question").innerText=qObj.q;
+let q=quiz[i];
+document.getElementById("question").innerText=q.q;
 
 let opt="";
-qObj.options.forEach(o=>{
+q.options.forEach(o=>{
 opt+=`<button onclick="check('${o}')">${o}</button>`;
 });
 
 document.getElementById("options").innerHTML=opt;
-
 startTimer();
 }
 
