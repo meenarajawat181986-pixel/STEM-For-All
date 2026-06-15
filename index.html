@@ -9,22 +9,22 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background: linear-gradient(135deg, #0b1020, #111827, #1e1b4b);
-color:#e5e7eb;
+background:#f5f7ff;
+color:#1f2937;
 }
 
 /* HEADER */
 header{
-background: linear-gradient(90deg, #7c3aed, #2563eb);
+background: linear-gradient(90deg, #3b82f6, #2563eb);
+color:white;
 text-align:center;
-padding:60px 20px;
-box-shadow:0 10px 40px rgba(0,0,0,0.6);
+padding:50px 20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
 header h1{
-font-size:42px;
 margin:0;
-color:white;
+font-size:40px;
 }
 
 header p{
@@ -33,56 +33,53 @@ opacity:0.9;
 
 /* SECTION */
 section{
-background: rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.12);
+background:white;
 margin:20px auto;
 padding:20px;
-border-radius:20px;
+border-radius:15px;
 width:92%;
 max-width:950px;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
 transition:0.3s;
 }
 
 section:hover{
-transform:scale(1.02);
-border:1px solid #8b5cf6;
+transform:scale(1.01);
 }
 
 h2{
-color:#a78bfa;
+color:#2563eb;
 }
 
-/* TRICK BOX */
+/* BOX */
 div{
-background: rgba(139,92,246,0.08);
-border-left:4px solid #8b5cf6;
+background:#f3f6ff;
+border-left:4px solid #3b82f6;
 padding:12px;
 margin:10px 0;
-border-radius:12px;
+border-radius:10px;
 }
 
 /* BUTTON */
 button{
 padding:10px 15px;
 border:none;
-border-radius:10px;
-background:#7c3aed;
+border-radius:8px;
+background:#2563eb;
 color:white;
 cursor:pointer;
-margin:5px 0;
+margin-top:5px;
 }
 
 button:hover{
-background:#6d28d9;
-transform:scale(1.05);
+background:#1d4ed8;
 }
 
 /* INPUT */
 input{
 padding:10px;
 border-radius:8px;
-border:none;
+border:1px solid #ccc;
 width:220px;
 }
 
@@ -91,14 +88,24 @@ width:220px;
 display:block;
 width:100%;
 text-align:left;
+margin:6px 0;
+background:#eef2ff;
+color:#111827;
+border:1px solid #c7d2fe;
+}
+
+#options button:hover{
+background:#dbeafe;
 }
 
 #timer{
-color:#fbbf24;
+color:#dc2626;
+font-weight:bold;
 }
 
 #score{
-color:#34d399;
+color:#16a34a;
+font-weight:bold;
 }
 
 /* FOOTER */
@@ -106,10 +113,8 @@ footer{
 text-align:center;
 padding:20px;
 margin-top:30px;
-background:#0b1020;
-border-top:1px solid #2d2d3a;
+background:#e5e7eb;
 }
-
 </style>
 
 </head>
@@ -149,19 +154,12 @@ border-top:1px solid #2d2d3a;
 </section>
 
 <section>
-<h2>🔬 Science</h2>
-<div>F = ma</div>
-<div>E = mc²</div>
-<div>V = IR</div>
-</section>
-
-<section>
 <h2>👨‍💻 Founder</h2>
 <p>Bhuwan Singh Rajawat</p>
 </section>
 
 <section>
-<h2>🧠 Quiz (Pro Mode)</h2>
+<h2>🧠 Quiz (Light Mode)</h2>
 
 <p id="question">Loading...</p>
 
@@ -177,6 +175,7 @@ border-top:1px solid #2d2d3a;
 © 2026 STEM For All
 </footer>
 
+<!-- SOUND -->
 <audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
 <audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
 
@@ -190,12 +189,12 @@ answer:"2x"
 },
 {
 q:"d(sin x)/dx = ?",
-options:["cos x","-sin x","sin x","tan x"],
+options:["cos x","-sin x","tan x","sin x"],
 answer:"cos x"
 },
 {
 q:"99² = ?",
-options:["9801","9900","9700","9604"],
+options:["9801","9900","9701","9604"],
 answer:"9801"
 },
 {
