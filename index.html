@@ -9,7 +9,7 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background: linear-gradient(135deg, #0f172a, #1e293b);
+background: radial-gradient(circle at top, #0f172a, #1e293b);
 color:#e5e7eb;
 }
 
@@ -23,13 +23,14 @@ box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
 header h1{
-font-size:40px;
+font-size:42px;
 margin:0;
+animation: glow 2s infinite alternate;
 }
 
-header p{
-margin-top:10px;
-opacity:0.9;
+@keyframes glow{
+from{text-shadow:0 0 10px #3b82f6;}
+to{text-shadow:0 0 25px #60a5fa;}
 }
 
 /* SECTIONS */
@@ -46,16 +47,12 @@ transition:0.3s;
 }
 
 section:hover{
-transform:scale(1.02);
+transform:scale(1.03);
 border:1px solid #3b82f6;
 }
 
 h2{
 color:#60a5fa;
-}
-
-h3{
-color:#93c5fd;
 }
 
 p{
@@ -77,14 +74,8 @@ transition:0.3s;
 }
 
 div:hover{
-transform:translateX(5px);
+transform:translateX(6px);
 background: rgba(59,130,246,0.2);
-}
-
-/* IMAGE */
-img{
-border-radius:15px;
-border:2px solid #3b82f6;
 }
 
 /* INPUT */
@@ -92,7 +83,7 @@ input{
 padding:10px;
 border-radius:8px;
 border:none;
-width:200px;
+width:220px;
 }
 
 /* BUTTON */
@@ -103,10 +94,13 @@ border-radius:8px;
 background:#2563eb;
 color:white;
 cursor:pointer;
+transition:0.2s;
+margin-top:5px;
 }
 
 button:hover{
 background:#1d4ed8;
+transform:scale(1.05);
 }
 
 /* FOOTER */
@@ -117,6 +111,7 @@ margin-top:30px;
 background:#0b1220;
 border-top:1px solid #1f2937;
 }
+
 </style>
 
 </head>
@@ -162,63 +157,41 @@ border-top:1px solid #1f2937;
 
 <section>
 <h2>👨‍💻 Founder</h2>
-
 <img src="Screenshot_2026-06-15-21-14-06-183.png" width="200">
-
 <p>Bhuwan Singh Rajawat</p>
-<p>Student • Teacher • STEM Enthusiast</p>
 </section>
 
+<!-- TRICKS -->
 <section>
-<h2>🧠 Advanced Math Tricks</h2>
+<h2>🧠 Math Tricks</h2>
 
-<div>
-<h3>✖️ Multiplication by 11</h3>
-<p>23 × 11 = 253</p>
-</div>
+<div>23 × 11 = 253</div>
+<div>35² = 1225</div>
+<div>98² = 9604</div>
+<div>145 ÷ 5 = 29</div>
+</section>
 
-<div>
-<h3>5️⃣ Square ending with 5</h3>
-<p>35² = 1225</p>
-</div>
+<!-- DIFFERENTIATION -->
+<section>
+<h2>📘 Differentiation Tricks</h2>
 
-<div>
-<h3>📊 Multiply by 5 fast</h3>
-<p>86 × 5 = 430</p>
-</div>
-
-<div>
-<h3>📐 Square near 100</h3>
-<p>98² = 9604</p>
-</div>
-
-<div>
-<h3>➗ Division by 5</h3>
-<p>145 ÷ 5 = 29</p>
-</div>
-
-<div>
-<h3>🧮 Matrix Trick</h3>
-<p>Triangular matrix determinant = diagonal product</p>
-<pre>
-1  0  0
-2  1  0
-1  2  2
-</pre>
-<p><b>Answer = 2</b></p>
-</div>
+<div>d(x^n)/dx = n·x^(n-1)</div>
+<div>d(sin x)/dx = cos x</div>
+<div>d(cos x)/dx = -sin x</div>
+<div>d(e^x)/dx = e^x</div>
+<div>d(ln x)/dx = 1/x</div>
 
 </section>
 
-<!-- 🧠 QUIZ SECTION -->
+<!-- QUIZ -->
 <section>
-<h2>🧠 Math Quiz</h2>
+<h2>🧠 Math Quiz (Tricks + Differentiation)</h2>
 
 <p id="question">Loading...</p>
 
-<input type="text" id="answer" placeholder="Your answer">
+<input id="answer" placeholder="Your answer">
 
-<br><br>
+<br>
 
 <button onclick="check()">Submit</button>
 
@@ -229,12 +202,54 @@ border-top:1px solid #1f2937;
 © 2026 STEM For All
 </footer>
 
+<!-- SOUND -->
+<audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+<audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
+
 <script>
+
+/* ✅ NEW UPGRADED QUIZ */
 let q = [
-{q:"23 × 11 = ?", a:"253"},
-{q:"35² = ?", a:"1225"},
-{q:"98² = ?", a:"9604"},
-{q:"145 ÷ 5 = ?", a:"29"}
+{
+q:"d(x²)/dx = ?",
+a:"2x"
+},
+{
+q:"d(sin x)/dx = ?",
+a:"cos x"
+},
+{
+q:"d(cos x)/dx = ?",
+a:"-sin x"
+},
+{
+q:"23 × 11 = ?",
+a:"253"
+},
+{
+q:"35² = ? (ending 5 trick)",
+a:"1225"
+},
+{
+q:"98² = ? (near 100 trick)",
+a:"9604"
+},
+{
+q:"145 ÷ 5 = ?",
+a:"29"
+},
+{
+q:"d(e^x)/dx = ?",
+a:"e^x"
+},
+{
+q:"d(ln x)/dx = ?",
+a:"1/x"
+},
+{
+q:"7 × 9 = ?",
+a:"63"
+}
 ];
 
 let i = 0;
@@ -244,13 +259,19 @@ document.getElementById("question").innerText = q[i].q;
 }
 
 function check(){
+
 let ans = document.getElementById("answer").value;
 let res = document.getElementById("result");
 
+let correct = document.getElementById("correctSound");
+let wrong = document.getElementById("wrongSound");
+
 if(ans == q[i].a){
 res.innerHTML = "✅ Correct!";
+correct.play();
 }else{
 res.innerHTML = "❌ Wrong! Answer: " + q[i].a;
+wrong.play();
 }
 
 i++;
@@ -262,12 +283,13 @@ res.innerHTML = "";
 load();
 }else{
 document.getElementById("question").innerText = "Quiz Finished 🎉";
-res.innerHTML = "";
+document.getElementById("result").innerHTML = "";
 }
 },1000);
 }
 
 load();
+
 </script>
 
 </body>
