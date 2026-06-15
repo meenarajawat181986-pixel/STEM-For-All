@@ -7,39 +7,99 @@
 
 <style>
 body{
-font-family:Arial,sans-serif;
 margin:0;
-background:#f4f4f4;
+font-family:Arial, sans-serif;
+background: linear-gradient(135deg, #0f172a, #1e293b);
+color:#e5e7eb;
 }
 
+/* HEADER */
 header{
-background:#1e3a8a;
+background: linear-gradient(90deg, #2563eb, #1d4ed8);
 color:white;
 text-align:center;
-padding:40px;
+padding:60px 20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
+header h1{
+font-size:40px;
+margin:0;
+}
+
+header p{
+margin-top:10px;
+opacity:0.9;
+}
+
+/* CONTAINER STYLE */
 section{
-background:white;
-margin:20px;
+background: rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+margin:20px auto;
 padding:20px;
-border-radius:10px;
+border-radius:18px;
+width:90%;
+max-width:900px;
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+backdrop-filter: blur(8px);
+transition:0.3s;
 }
 
+section:hover{
+transform:scale(1.02);
+border:1px solid #3b82f6;
+}
+
+/* TITLES */
 h2{
-color:#1e3a8a;
+color:#60a5fa;
 }
 
-footer{
-background:#111827;
-color:white;
-text-align:center;
-padding:15px;
+h3{
+color:#93c5fd;
 }
 
-img{
+/* LIST */
+ul li{
+margin:5px 0;
+}
+
+/* TRICK BOXES */
+div{
+background: rgba(59,130,246,0.1);
+border-left:4px solid #3b82f6;
+padding:12px;
+margin:10px 0;
 border-radius:10px;
+transition:0.3s;
 }
+
+div:hover{
+transform:translateX(5px);
+background: rgba(59,130,246,0.2);
+}
+
+/* IMAGE */
+img{
+border-radius:15px;
+border:2px solid #3b82f6;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+margin-top:30px;
+background:#0b1220;
+border-top:1px solid #1f2937;
+}
+
+/* TEXT */
+p{
+color:#cbd5e1;
+}
+
 </style>
 
 </head>
@@ -47,16 +107,13 @@ border-radius:10px;
 <body>
 
 <header>
-<h1>STEM For All</h1>
-<p>Making quality STEM education accessible to every student.</p>
+<h1>STEM For All 🚀</h1>
+<p>Learn Smart • Think Fast • Grow Strong</p>
 </header>
 
 <section>
 <h2>📚 Our Mission</h2>
-<p>
-STEM For All aims to provide free Mathematics and Science education
-to students regardless of their financial background.
-</p>
+<p>Free Mathematics and Science education for every student.</p>
 </section>
 
 <section>
@@ -94,79 +151,38 @@ to students regardless of their financial background.
 <p>Bhuwan Singh Rajawat</p>
 <p>Student • Teacher • STEM Enthusiast</p>
 </section>
-<section>
-<h2>🧠 Math Tricks</h2>
 
-<ul>
-<li><b>Multiplication by 11:</b> 23 × 11 = 253 (2 + 3 in middle)</li>
-
-<li><b>Square ending with 5:</b> 35² = 3×4 = 12 → 1225</li>
-
-<li><b>Multiply by 5:</b> 86 × 5 = 86 ÷ 2 = 43 → 430</li>
-
-<li><b>Square near 100:</b> 98² = 9604 (100-2 rule)</li>
-
-<li><b>Division by 5:</b> 145 ÷ 5 = 145 × 2 ÷ 10 = 29</li>
-
-<li><b>Quick addition:</b> 498 + 376 = (500 + 376) - 2 = 874</li>
-
-<li><b>Multiply by 9:</b> 7×9 = 63 (10×7 - 7)</li>
-
-<li><b>Percentage shortcut:</b> 50% = 1/2, 25% = 1/4, 20% = 1/5</li>
-
-<li><b>Fast percentage form:</b> 20% increase = ×1.2</li>
-</ul>
-
-<hr>
-
-<h3>🧠 Special Trick: Triangular Matrix Determinant</h3>
-
-<p><b>Rule:</b> Agar matrix lower/upper triangular ho (diagonal ke upar ya neeche sab zero ho), to determinant = diagonal elements ka product.</p>
-
-<pre>
-1    0    0
-2    1    0
-1    2    2
-</pre>
-
-<p><b>Diagonal:</b> 1, 1, 2</p>
-
-<p><b>Determinant =</b> 1 × 1 × 2 = <b>2</b></p>
-
-<p><i>Shortcut: Triangular matrix → diagonal multiply</i></p>
-
-</section>
 <section>
 <h2>🧠 Advanced Math Tricks</h2>
 
-<div style="background:#f9fafb;padding:15px;margin:10px 0;border-radius:10px;">
+<div>
 <h3>✖️ Multiplication by 11</h3>
-<p>23 × 11 = 253 (2 + 3 in middle)</p>
+<p>23 × 11 = 253</p>
 </div>
 
-<div style="background:#f9fafb;padding:15px;margin:10px 0;border-radius:10px;">
+<div>
 <h3>5️⃣ Square ending with 5</h3>
-<p>35² = 3×4 = 12 → 1225</p>
+<p>35² = 1225</p>
 </div>
 
-<div style="background:#f9fafb;padding:15px;margin:10px 0;border-radius:10px;">
+<div>
 <h3>📊 Multiply by 5 fast</h3>
-<p>86 × 5 = 86 ÷ 2 = 43 → 430</p>
+<p>86 × 5 = 430</p>
 </div>
 
-<div style="background:#f9fafb;padding:15px;margin:10px 0;border-radius:10px;">
+<div>
 <h3>📐 Square near 100</h3>
-<p>98² = 9604 (100 - 2 rule)</p>
+<p>98² = 9604</p>
 </div>
 
-<div style="background:#f9fafb;padding:15px;margin:10px 0;border-radius:10px;">
+<div>
 <h3>➗ Division by 5</h3>
-<p>145 ÷ 5 = 145 × 2 ÷ 10</p>
+<p>145 ÷ 5 = 29</p>
 </div>
 
-<div style="background:#f9fafb;padding:15px;margin:10px 0;border-radius:10px;">
+<div>
 <h3>🧮 Matrix Trick</h3>
-<p>Triangular matrix ka determinant = diagonal elements ka product</p>
+<p>Triangular matrix determinant = diagonal product</p>
 
 <pre>
 1  0  0
@@ -174,11 +190,12 @@ to students regardless of their financial background.
 1  2  2
 </pre>
 
-<p>Answer = 1 × 1 × 2 = 2</p>
+<p><b>Answer = 2</b></p>
 </div>
 
 </section>
-  <footer>
+
+<footer>
 © 2026 STEM For All
 </footer>
 
