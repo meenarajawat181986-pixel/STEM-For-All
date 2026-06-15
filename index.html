@@ -19,16 +19,11 @@ background: linear-gradient(90deg, #3b82f6, #2563eb);
 color:white;
 text-align:center;
 padding:50px 20px;
-box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
 header h1{
 margin:0;
 font-size:40px;
-}
-
-header p{
-opacity:0.9;
 }
 
 /* SECTION */
@@ -40,11 +35,6 @@ border-radius:15px;
 width:92%;
 max-width:950px;
 box-shadow:0 5px 20px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-
-section:hover{
-transform:scale(1.01);
 }
 
 h2{
@@ -60,6 +50,13 @@ margin:10px 0;
 border-radius:10px;
 }
 
+/* IMAGE */
+img{
+border-radius:15px;
+border:2px solid #3b82f6;
+width:200px;
+}
+
 /* BUTTON */
 button{
 padding:10px 15px;
@@ -68,7 +65,6 @@ border-radius:8px;
 background:#2563eb;
 color:white;
 cursor:pointer;
-margin-top:5px;
 }
 
 button:hover{
@@ -83,7 +79,7 @@ border:1px solid #ccc;
 width:220px;
 }
 
-/* QUIZ UI */
+/* QUIZ */
 #options button{
 display:block;
 width:100%;
@@ -98,21 +94,10 @@ border:1px solid #c7d2fe;
 background:#dbeafe;
 }
 
-#timer{
-color:#dc2626;
-font-weight:bold;
-}
-
-#score{
-color:#16a34a;
-font-weight:bold;
-}
-
 /* FOOTER */
 footer{
 text-align:center;
 padding:20px;
-margin-top:30px;
 background:#e5e7eb;
 }
 </style>
@@ -139,35 +124,34 @@ background:#e5e7eb;
 <div>101² = 10201</div>
 <div>125 × 8 = 1000</div>
 <div>75² = 5625</div>
-<div>7 × 9 = 63</div>
 </section>
 
 <section>
-<h2>📘 Differentiation Formulas</h2>
+<h2>📘 Differentiation</h2>
 <div>d(x^n)/dx = n·x^(n-1)</div>
 <div>d(sin x)/dx = cos x</div>
 <div>d(cos x)/dx = -sin x</div>
-<div>d(tan x)/dx = sec²x</div>
 <div>d(e^x)/dx = e^x</div>
 <div>d(ln x)/dx = 1/x</div>
-<div>d(uv) = u dv + v du</div>
 </section>
 
 <section>
 <h2>👨‍💻 Founder</h2>
+
+<!-- 🔥 PHOTO FIX HERE -->
+<img src="Screenshot_2026-06-15-21-14-06-183.png" alt="Founder Photo">
+
 <p>Bhuwan Singh Rajawat</p>
 </section>
 
 <section>
-<h2>🧠 Quiz (Light Mode)</h2>
+<h2>🧠 Quiz</h2>
 
 <p id="question">Loading...</p>
 
 <div id="options"></div>
 
-<p id="timer">Time: 10</p>
 <p id="score">Score: 0</p>
-
 <p id="result"></p>
 </section>
 
@@ -175,59 +159,20 @@ background:#e5e7eb;
 © 2026 STEM For All
 </footer>
 
-<!-- SOUND -->
 <audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
 <audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
 
 <script>
 
 let quiz = [
-{
-q:"d(x²)/dx = ?",
-options:["2x","x²","x","1/x"],
-answer:"2x"
-},
-{
-q:"d(sin x)/dx = ?",
-options:["cos x","-sin x","tan x","sin x"],
-answer:"cos x"
-},
-{
-q:"99² = ?",
-options:["9801","9900","9701","9604"],
-answer:"9801"
-},
-{
-q:"125 × 8 = ?",
-options:["1000","900","1100","1200"],
-answer:"1000"
-},
-{
-q:"d(ln x)/dx = ?",
-options:["1/x","x","ln x","0"],
-answer:"1/x"
-}
+{q:"d(x²)/dx = ?", options:["2x","x","x²"], answer:"2x"},
+{q:"d(sin x)/dx = ?", options:["cos x","-sin x","sin x"], answer:"cos x"},
+{q:"99² = ?", options:["9801","9900","9700"], answer:"9801"},
+{q:"125 × 8 = ?", options:["1000","900","1100"], answer:"1000"}
 ];
 
 let i=0;
 let score=0;
-let time=10;
-let interval;
-
-function startTimer(){
-time=10;
-document.getElementById("timer").innerText="Time: "+time;
-
-interval=setInterval(()=>{
-time--;
-document.getElementById("timer").innerText="Time: "+time;
-
-if(time==0){
-clearInterval(interval);
-next();
-}
-},1000);
-}
 
 function load(){
 let q=quiz[i];
@@ -239,11 +184,9 @@ opt+=`<button onclick="check('${o}')">${o}</button>`;
 });
 
 document.getElementById("options").innerHTML=opt;
-startTimer();
 }
 
 function check(ans){
-clearInterval(interval);
 
 let correct=document.getElementById("correctSound");
 let wrong=document.getElementById("wrongSound");
@@ -259,20 +202,17 @@ wrong.play();
 
 document.getElementById("score").innerText="Score: "+score;
 
-setTimeout(next,800);
-}
-
-function next(){
 i++;
 
+setTimeout(()=>{
 if(i<quiz.length){
 document.getElementById("result").innerText="";
 load();
 }else{
-document.getElementById("question").innerText="🎉 Quiz Finished!";
+document.getElementById("question").innerText="Quiz Finished 🎉";
 document.getElementById("options").innerHTML="";
-document.getElementById("timer").innerText="";
 }
+},800);
 }
 
 load();
