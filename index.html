@@ -32,7 +32,7 @@ margin-top:10px;
 opacity:0.9;
 }
 
-/* CONTAINER STYLE */
+/* SECTIONS */
 section{
 background: rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
@@ -42,7 +42,6 @@ border-radius:18px;
 width:90%;
 max-width:900px;
 box-shadow:0 8px 25px rgba(0,0,0,0.4);
-backdrop-filter: blur(8px);
 transition:0.3s;
 }
 
@@ -51,7 +50,6 @@ transform:scale(1.02);
 border:1px solid #3b82f6;
 }
 
-/* TITLES */
 h2{
 color:#60a5fa;
 }
@@ -60,12 +58,15 @@ h3{
 color:#93c5fd;
 }
 
-/* LIST */
+p{
+color:#cbd5e1;
+}
+
 ul li{
 margin:5px 0;
 }
 
-/* TRICK BOXES */
+/* TRICKS BOX */
 div{
 background: rgba(59,130,246,0.1);
 border-left:4px solid #3b82f6;
@@ -86,6 +87,28 @@ border-radius:15px;
 border:2px solid #3b82f6;
 }
 
+/* INPUT */
+input{
+padding:10px;
+border-radius:8px;
+border:none;
+width:200px;
+}
+
+/* BUTTON */
+button{
+padding:10px 15px;
+border:none;
+border-radius:8px;
+background:#2563eb;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
 /* FOOTER */
 footer{
 text-align:center;
@@ -94,12 +117,6 @@ margin-top:30px;
 background:#0b1220;
 border-top:1px solid #1f2937;
 }
-
-/* TEXT */
-p{
-color:#cbd5e1;
-}
-
 </style>
 
 </head>
@@ -183,21 +200,75 @@ color:#cbd5e1;
 <div>
 <h3>🧮 Matrix Trick</h3>
 <p>Triangular matrix determinant = diagonal product</p>
-
 <pre>
 1  0  0
 2  1  0
 1  2  2
 </pre>
-
 <p><b>Answer = 2</b></p>
 </div>
 
 </section>
 
+<!-- 🧠 QUIZ SECTION -->
+<section>
+<h2>🧠 Math Quiz</h2>
+
+<p id="question">Loading...</p>
+
+<input type="text" id="answer" placeholder="Your answer">
+
+<br><br>
+
+<button onclick="check()">Submit</button>
+
+<p id="result"></p>
+</section>
+
 <footer>
 © 2026 STEM For All
 </footer>
+
+<script>
+let q = [
+{q:"23 × 11 = ?", a:"253"},
+{q:"35² = ?", a:"1225"},
+{q:"98² = ?", a:"9604"},
+{q:"145 ÷ 5 = ?", a:"29"}
+];
+
+let i = 0;
+
+function load(){
+document.getElementById("question").innerText = q[i].q;
+}
+
+function check(){
+let ans = document.getElementById("answer").value;
+let res = document.getElementById("result");
+
+if(ans == q[i].a){
+res.innerHTML = "✅ Correct!";
+}else{
+res.innerHTML = "❌ Wrong! Answer: " + q[i].a;
+}
+
+i++;
+
+setTimeout(()=>{
+if(i < q.length){
+document.getElementById("answer").value = "";
+res.innerHTML = "";
+load();
+}else{
+document.getElementById("question").innerText = "Quiz Finished 🎉";
+res.innerHTML = "";
+}
+},1000);
+}
+
+load();
+</script>
 
 </body>
 </html>
