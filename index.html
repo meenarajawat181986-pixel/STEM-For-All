@@ -9,42 +9,54 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#f5f7ff;
-color:#1f2937;
+background: linear-gradient(135deg, #dbeafe, #f5d0fe, #e0f2fe);
+color:#0f172a;
 }
 
 /* HEADER */
 header{
-background: linear-gradient(90deg, #3b82f6, #2563eb);
+background: linear-gradient(90deg, #6366f1, #3b82f6);
 color:white;
 text-align:center;
 padding:50px 20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 header h1{
 margin:0;
-font-size:40px;
+font-size:42px;
 }
 
-/* SECTION */
+header p{
+opacity:0.9;
+}
+
+/* GLASS SECTIONS */
 section{
-background:white;
+background: rgba(255,255,255,0.25);
+backdrop-filter: blur(10px);
+border:1px solid rgba(255,255,255,0.4);
 margin:20px auto;
 padding:20px;
-border-radius:15px;
+border-radius:18px;
 width:92%;
 max-width:950px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+section:hover{
+transform:scale(1.02);
 }
 
 h2{
-color:#2563eb;
+color:#1d4ed8;
 }
 
-/* BOX */
+/* BOXES */
 div{
-background:#f3f6ff;
-border-left:4px solid #3b82f6;
+background: rgba(255,255,255,0.4);
+border-left:4px solid #6366f1;
 padding:12px;
 margin:10px 0;
 border-radius:10px;
@@ -53,7 +65,7 @@ border-radius:10px;
 /* IMAGE */
 img{
 border-radius:15px;
-border:2px solid #3b82f6;
+border:2px solid #6366f1;
 width:200px;
 }
 
@@ -61,21 +73,23 @@ width:200px;
 button{
 padding:10px 15px;
 border:none;
-border-radius:8px;
-background:#2563eb;
+border-radius:10px;
+background:#6366f1;
 color:white;
 cursor:pointer;
+transition:0.2s;
 }
 
 button:hover{
-background:#1d4ed8;
+background:#4f46e5;
+transform:scale(1.05);
 }
 
 /* INPUT */
 input{
 padding:10px;
 border-radius:8px;
-border:1px solid #ccc;
+border:1px solid #94a3b8;
 width:220px;
 }
 
@@ -85,20 +99,21 @@ display:block;
 width:100%;
 text-align:left;
 margin:6px 0;
-background:#eef2ff;
-color:#111827;
+background: rgba(255,255,255,0.6);
+color:#0f172a;
 border:1px solid #c7d2fe;
 }
 
 #options button:hover{
-background:#dbeafe;
+background:#e0e7ff;
 }
 
 /* FOOTER */
 footer{
 text-align:center;
 padding:20px;
-background:#e5e7eb;
+background: rgba(255,255,255,0.3);
+margin-top:30px;
 }
 </style>
 
@@ -119,9 +134,7 @@ background:#e5e7eb;
 <section>
 <h2>🧠 Math Tricks</h2>
 <div>23 × 11 = 253</div>
-<div>45 × 11 = 495</div>
 <div>99² = 9801</div>
-<div>101² = 10201</div>
 <div>125 × 8 = 1000</div>
 <div>75² = 5625</div>
 </section>
@@ -138,8 +151,7 @@ background:#e5e7eb;
 <section>
 <h2>👨‍💻 Founder</h2>
 
-<!-- 🔥 PHOTO FIX HERE -->
-<img src="Screenshot_2026-06-15-21-14-06-183.png" alt="Founder Photo">
+<img src="Screenshot_2026-06-15-21-14-06-183.png">
 
 <p>Bhuwan Singh Rajawat</p>
 </section>
@@ -148,9 +160,7 @@ background:#e5e7eb;
 <h2>🧠 Quiz</h2>
 
 <p id="question">Loading...</p>
-
 <div id="options"></div>
-
 <p id="score">Score: 0</p>
 <p id="result"></p>
 </section>
