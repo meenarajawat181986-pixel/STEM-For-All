@@ -8,19 +8,17 @@
 <style>
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background: linear-gradient(135deg, #ffedd5, #fff7ed);
+font-family:Arial;
+background: linear-gradient(135deg,#ffedd5,#fff7ed);
 color:#1f2937;
 }
 
 /* HEADER */
 header{
-background: linear-gradient(90deg, #f97316, #fb923c);
-text-align:center;
-padding:50px 20px;
+background: linear-gradient(90deg,#f97316,#fb923c);
 color:white;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-border-bottom:5px solid #ea580c;
+text-align:center;
+padding:45px;
 }
 
 header h1{
@@ -28,30 +26,19 @@ margin:0;
 font-size:42px;
 }
 
-header p{
-opacity:0.9;
-}
-
-/* SECTIONS */
+/* SECTION */
 section{
 background:white;
 margin:20px auto;
 padding:20px;
-border-radius:16px;
 width:92%;
 max-width:950px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-
-border-left:6px solid #fb923c;
-border-right:6px solid #f97316;
+border-left:6px solid #f97316;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
 }
 
-/* TITLES */
-h2{
-color:#ea580c;
-}
-
-/* BOXES */
+/* BOX */
 div{
 background:#fff7ed;
 border-left:4px solid #fb923c;
@@ -63,63 +50,37 @@ border-radius:10px;
 /* IMAGE */
 img{
 width:200px;
-border-radius:15px;
+border-radius:12px;
 border:3px solid #f97316;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* QUIZ BAR */
+#quizBar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#fff3e0;
+border-top:3px solid #f97316;
+padding:12px;
+display:flex;
+justify-content:space-between;
+font-weight:bold;
 }
 
 /* BUTTON */
 button{
-padding:10px 15px;
-border:none;
-border-radius:10px;
+padding:10px;
 background:#f97316;
 color:white;
+border:none;
+border-radius:8px;
 cursor:pointer;
 }
 
 button:hover{
 background:#ea580c;
 }
-
-/* INPUT */
-input{
-padding:10px;
-border-radius:8px;
-border:1px solid #fdba74;
-width:220px;
-}
-
-/* QUIZ */
-#options button{
-display:block;
-width:100%;
-text-align:left;
-margin:6px 0;
-background:#fff7ed;
-border:1px solid #fdba74;
-color:#1f2937;
-}
-
-#timer{
-color:#dc2626;
-font-weight:bold;
-}
-
-#score{
-color:#16a34a;
-font-weight:bold;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-background:#fed7aa;
-margin-top:30px;
-border-top:4px solid #f97316;
-}
-
 </style>
 
 </head>
@@ -133,165 +94,94 @@ border-top:4px solid #f97316;
 
 <section>
 <h2>📚 Mission</h2>
-<p>Free STEM education for every student with tricks, formulas and practice.</p>
+<p>Free STEM education for students with tricks, formulas & quizzes.</p>
 </section>
 
-<!-- MATH TRICKS -->
 <section>
-<h2>🧠 Mathematics Tricks</h2>
-<div>23 × 11 = 253</div>
-<div>45 × 11 = 495</div>
+<h2>🧠 Math Tricks</h2>
+<div>23×11 = 253</div>
 <div>99² = 9801</div>
-<div>101² = 10201</div>
-<div>125 × 8 = 1000</div>
+<div>125×8 = 1000</div>
 <div>75² = 5625</div>
-<div>Multiply by 9: 7×9 = 63</div>
-<div>Square ending 5: 35² = 1225</div>
-<div>Percentage: 50% = 1/2</div>
 </section>
 
-<!-- DIFFERENTIATION -->
 <section>
-<h2>📘 Differentiation Formulas</h2>
+<h2>📘 Differentiation</h2>
 <div>d(x^n)/dx = n·x^(n-1)</div>
 <div>d(sin x)/dx = cos x</div>
 <div>d(cos x)/dx = -sin x</div>
-<div>d(tan x)/dx = sec²x</div>
 <div>d(e^x)/dx = e^x</div>
-<div>d(a^x)/dx = a^x ln a</div>
 <div>d(ln x)/dx = 1/x</div>
-<div>d(uv) = u dv + v du</div>
-<div>d(u/v) = (v du - u dv)/v²</div>
 </section>
 
-<!-- PHYSICS -->
 <section>
-<h2>⚡ Physics Formulas</h2>
+<h2>⚡ Physics</h2>
 <div>F = ma</div>
 <div>V = IR</div>
 <div>E = mc²</div>
-<div>Power = Work/Time</div>
 <div>KE = 1/2 mv²</div>
 </section>
 
-<!-- CHEMISTRY -->
 <section>
-<h2>🧪 Chemistry Basics</h2>
+<h2>🧪 Chemistry</h2>
 <div>PV = nRT</div>
 <div>pH = -log[H⁺]</div>
 <div>Molarity = moles/volume</div>
-<div>Avogadro number = 6.022×10²³</div>
 </section>
 
-<!-- FOUNDER -->
 <section>
 <h2>👨‍💻 Founder</h2>
 
-<img src="Screenshot_2026-06-15-21-14-06-183.png" alt="Founder Photo">
+<img src="Screenshot_2026-06-15-21-14-06-183.png">
 
-<h3 style="color:#ea580c;">Bhuwan Singh Rajawat</h3>
+<h3 style="color:#f97316;">Bhuwan Singh Rajawat</h3>
 <p>Student • Teacher • STEM Enthusiast</p>
 </section>
 
-<!-- QUIZ -->
-<section>
-<h2>🧠 Quiz</h2>
-
-<p id="question">Loading...</p>
-
-<div id="options"></div>
-
-<p id="timer">Time: 10</p>
-<p id="score">Score: 0</p>
-
-<p id="result"></p>
-</section>
-
-<footer>
-© 2026 STEM For All
-</footer>
-
-<audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
-<audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
+<!-- QUIZ BAR -->
+<div id="quizBar">
+<span id="timer">Time: 30</span>
+<span id="score">Score: 0</span>
+</div>
 
 <script>
 
-let quiz = [
-{q:"d(x²)/dx = ?", options:["2x","x","x²"], answer:"2x"},
-{q:"d(sin x)/dx = ?", options:["cos x","-sin x","tan x"], answer:"cos x"},
-{q:"99² = ?", options:["9801","9900","9701"], answer:"9801"},
-{q:"125 × 8 = ?", options:["1000","900","1100"], answer:"1000"},
-{q:"d(ln x)/dx = ?", options:["1/x","x","ln x"], answer:"1/x"}
-];
+let time = 30;
+let score = 0;
+let ended = false;
 
-let i=0;
-let score=0;
-let time=10;
-let interval;
-
-function startTimer(){
-time=10;
-document.getElementById("timer").innerText="Time: "+time;
-
-interval=setInterval(()=>{
+/* TIMER START ON OPEN */
+let timer = setInterval(()=>{
 time--;
-document.getElementById("timer").innerText="Time: "+time;
+document.getElementById("timer").innerText = "Time: " + time;
 
-if(time==0){
-clearInterval(interval);
-next();
+if(time <= 0){
+endQuiz();
 }
 },1000);
+
+/* SCROLL END */
+window.addEventListener("scroll",()=>{
+let scrollTop = window.scrollY;
+let docHeight = document.body.scrollHeight - window.innerHeight;
+
+if((scrollTop/docHeight)*100 > 90){
+endQuiz();
 }
-
-function load(){
-let q=quiz[i];
-document.getElementById("question").innerText=q.q;
-
-let opt="";
-q.options.forEach(o=>{
-opt+=`<button onclick="check('${o}')">${o}</button>`;
 });
 
-document.getElementById("options").innerHTML=opt;
+function endQuiz(){
+if(ended) return;
+ended = true;
 
-startTimer();
+clearInterval(timer);
+
+document.getElementById("timer").innerText = "Quiz Ended 🏁";
+document.getElementById("score").innerText = "Final Score: " + score;
 }
 
-function check(ans){
-clearInterval(interval);
-
-let correct=document.getElementById("correctSound");
-let wrong=document.getElementById("wrongSound");
-
-if(ans==quiz[i].answer){
-score++;
-document.getElementById("result").innerText="✅ Correct!";
-correct.play();
-}else{
-document.getElementById("result").innerText="❌ Wrong!";
-wrong.play();
-}
-
-document.getElementById("score").innerText="Score: "+score;
-
-setTimeout(next,800);
-}
-
-function next(){
-i++;
-
-if(i<quiz.length){
-document.getElementById("result").innerText="";
-load();
-}else{
-document.getElementById("question").innerText="Quiz Finished 🎉";
-document.getElementById("options").innerHTML="";
-document.getElementById("timer").innerText="";
-}
-}
-
-load();
+/* demo scoring (future upgrade hook) */
+score = 0;
 
 </script>
 
