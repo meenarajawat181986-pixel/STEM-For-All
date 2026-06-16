@@ -94,14 +94,14 @@ background:#ea580c;
 
 <section>
 <h2>📚 Mission</h2>
-<p>Free STEM education for students with tricks, formulas & quizzes.</p>
+<p>Free STEM education for students.</p>
 </section>
 
 <section>
 <h2>🧠 Math Tricks</h2>
-<div>23×11 = 253</div>
+<div>23 × 11 = 253</div>
 <div>99² = 9801</div>
-<div>125×8 = 1000</div>
+<div>125 × 8 = 1000</div>
 <div>75² = 5625</div>
 </section>
 
@@ -149,39 +149,53 @@ background:#ea580c;
 let time = 30;
 let score = 0;
 let ended = false;
+let started = false;
 
-/* TIMER START ON OPEN */
+/* TIMER START ON FIRST USER ACTION */
+function startQuiz(){
+if(started) return;
+started = true;
+
 let timer = setInterval(()=>{
+if(ended) return;
+
 time--;
 document.getElementById("timer").innerText = "Time: " + time;
 
 if(time <= 0){
-endQuiz();
+endQuiz(timer);
 }
 },1000);
 
-/* SCROLL END */
+/* SCROLL DETECTION */
 window.addEventListener("scroll",()=>{
+if(ended) return;
+
 let scrollTop = window.scrollY;
 let docHeight = document.body.scrollHeight - window.innerHeight;
 
-if((scrollTop/docHeight)*100 > 90){
-endQuiz();
+let percent = (scrollTop / docHeight) * 100;
+
+if(percent > 90){
+endQuiz(timer);
 }
 });
+}
 
-function endQuiz(){
+/* END QUIZ */
+function endQuiz(timer){
+
 if(ended) return;
 ended = true;
 
 clearInterval(timer);
 
-document.getElementById("timer").innerText = "Quiz Ended 🏁";
+document.getElementById("timer").innerText = "🏁 Quiz Ended";
 document.getElementById("score").innerText = "Final Score: " + score;
 }
 
-/* demo scoring (future upgrade hook) */
-score = 0;
+/* AUTO START */
+window.onload = startQuiz;
 
 </script>
 
