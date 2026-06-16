@@ -27,27 +27,23 @@ padding:20px;
 width:92%;
 max-width:900px;
 border-left:6px solid #f97316;
-border-radius:14px;
-box-shadow:0 6px 18px rgba(0,0,0,0.1);
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
+
+h2{ color:#ea580c; }
 
 img{
-width:200px;
-border-radius:12px;
-border:3px solid #f97316;
+width:180px;
+border-radius:10px;
+border:2px solid #f97316;
 }
 
-#quizBar{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#fff3e0;
-border-top:3px solid #f97316;
-padding:10px;
-display:flex;
-justify-content:space-between;
-font-weight:bold;
+/* QUIZ BOX */
+#quizBox{
+background:#fff7ed;
+padding:15px;
+border-radius:10px;
 }
 
 button{
@@ -57,110 +53,189 @@ color:white;
 border:none;
 border-radius:8px;
 cursor:pointer;
+margin-top:5px;
+}
+button:hover{ background:#ea580c; }
+
+select, input{
+padding:8px;
+margin:5px 0;
 }
 
-button:hover{
-background:#ea580c;
-}
 </style>
-
 </head>
 
 <body>
 
 <header>
 <h1>STEM For All 🚀</h1>
-<p>Learn Smart • Think Fast</p>
+<p>Learn • Practice • Master</p>
 </header>
 
-<section>
-<h2>🧠 Math Tricks</h2>
-<div>23×11=253</div>
-<div>99²=9801</div>
-<div>125×8=1000</div>
-</section>
-
-<section>
-<h2>📘 Differentiation</h2>
-<div>d(x^n)=n·x^(n-1)</div>
-<div>d(sin x)=cos x</div>
-<div>d(e^x)=e^x</div>
-</section>
-
+<!-- NAME + PHOTO -->
 <section>
 <h2>👨‍💻 Founder</h2>
 <img src="Screenshot_2026-06-15-21-14-06-183.png">
 <p><b>Bhuwan Singh Rajawat</b></p>
 </section>
 
-<!-- QUIZ BAR -->
-<div id="quizBar">
-<span id="timer">Time: 30</span>
-<span id="score">Score: 0</span>
+<!-- MATH -->
+<section>
+<h2>🧠 Mathematics Tricks</h2>
+<p>23×11 = 253</p>
+<p>99² = 9801</p>
+<p>125×8 = 1000</p>
+<p>75² = 5625</p>
+<p>Square ending 5 rule</p>
+<p>Algebra identity: (a+b)² = a²+2ab+b²</p>
+<p>(a-b)² = a²-2ab+b²</p>
+<p>a²-b² = (a-b)(a+b)</p>
+<p>Trigonometry: sin²θ + cos²θ = 1</p>
+<p>Quick percentage: 10% = divide by 10</p>
+</section>
+
+<!-- PHYSICS -->
+<section>
+<h2>⚡ Physics Formulas</h2>
+<p>F = ma</p>
+<p>V = IR</p>
+<p>E = mc²</p>
+<p>KE = 1/2 mv²</p>
+<p>PE = mgh</p>
+<p>Power = Work/Time</p>
+<p>Momentum = mv</p>
+<p>Pressure = F/A</p>
+<p>Waves: v = fλ</p>
+</section>
+
+<!-- CHEMISTRY -->
+<section>
+<h2>🧪 Chemistry</h2>
+<p>PV = nRT</p>
+<p>pH = -log[H⁺]</p>
+<p>Molarity = moles/volume</p>
+<p>Avogadro = 6.022×10²³</p>
+<p>Atomic number = protons</p>
+<p>Mass number = protons + neutrons</p>
+<p>Bond types: ionic, covalent</p>
+</section>
+
+<!-- BIOLOGY -->
+<section>
+<h2>🧬 Biology</h2>
+<p>DNA = genetic code</p>
+<p>RNA = protein synthesis</p>
+<p>Photosynthesis = CO₂ + H₂O → Glucose + O₂</p>
+<p>Respiration = Glucose → ATP</p>
+<p>Heart pumps blood</p>
+<p>Lungs exchange oxygen</p>
+<p>Neuron = nerve cell</p>
+</section>
+
+<!-- QUIZ -->
+<section>
+<h2>🧠 Quiz System</h2>
+
+<div id="quizBox">
+
+<label>Select Difficulty:</label>
+<br>
+<select id="level">
+<option value="easy">Easy</option>
+<option value="medium">Medium</option>
+<option value="hard">Hard</option>
+</select>
+
+<br><br>
+<button onclick="startQuiz()">Start Quiz</button>
+
+<hr>
+
+<p id="q">Press Start</p>
+<input id="ans" placeholder="answer">
+
+<br>
+<button onclick="check()">Submit</button>
+
+<p id="timer">Time: 30</p>
+<p id="result"></p>
+
 </div>
+</section>
 
 <script>
 
-let quiz = [
-"23 × 11 = 253",
-"d(x²)/dx = 2x",
-"99² = 9801",
-"125 × 8 = 1000"
-];
+let quizData = {
+easy:[
+{q:"23×11=?",a:"253"},
+{q:"10×10=?",a:"100"},
+{q:"5×5=?",a:"25"}
+],
+medium:[
+{q:"99²=?",a:"9801"},
+{q:"125×8=?",a:"1000"},
+{q:"15×15=?",a:"225"}
+],
+hard:[
+{q:"d(x²)/dx=?",a:"2x"},
+{q:"sin²θ+cos²θ=?",a:"1"},
+{q:"E=mc² represents?",a:"energy"}
+]
+};
 
-let time = 30;
-let score = 0;
-let i = 0;
-let ended = false;
+let qList=[];
+let i=0;
+let time=30;
+let timer;
 
-/* LOAD QUIZ (SAFE) */
-function loadQuiz(){
-if(i < quiz.length){
-document.getElementById("score").innerText = "Score: " + score;
+function startQuiz(){
+let lvl=document.getElementById("level").value;
+qList=quizData[lvl];
+i=0;
+time=30;
+
+loadQ();
+
+clearInterval(timer);
+timer=setInterval(()=>{
+time--;
+document.getElementById("timer").innerText="Time: "+time;
+
+if(time<=0){
+endQuiz();
+}
+},1000);
+}
+
+function loadQ(){
+document.getElementById("q").innerText=qList[i].q;
+document.getElementById("ans").value="";
+document.getElementById("result").innerText="";
+}
+
+function check(){
+let a=document.getElementById("ans").value;
+
+if(a==qList[i].a){
+document.getElementById("result").innerText="Correct ✅";
+}else{
+document.getElementById("result").innerText="Wrong ❌ Answer: "+qList[i].a;
+}
+
+i++;
+
+if(i<qList.length){
+loadQ();
 }else{
 endQuiz();
 }
 }
 
-/* TIMER START */
-let timer = setInterval(()=>{
-if(ended) return;
-
-time--;
-document.getElementById("timer").innerText = "Time: " + time;
-
-if(time <= 0){
-endQuiz();
-}
-},1000);
-
-/* SCROLL END (SAFE) */
-window.addEventListener("scroll",()=>{
-if(ended) return;
-
-let scrollTop = window.scrollY;
-let docHeight = document.body.scrollHeight - window.innerHeight;
-
-let percent = (scrollTop / docHeight) * 100;
-
-if(percent > 90){
-endQuiz();
-}
-});
-
-/* END QUIZ (NO BUG) */
 function endQuiz(){
-if(ended) return;
-
-ended = true;
 clearInterval(timer);
-
-document.getElementById("timer").innerText = "🏁 Quiz Ended";
-document.getElementById("score").innerText = "Final Score: " + score;
+document.getElementById("q").innerText="Quiz Finished 🎉";
+document.getElementById("timer").innerText="Time Over";
 }
-
-/* START */
-loadQuiz();
 
 </script>
 
