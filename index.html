@@ -13,48 +13,30 @@ background: linear-gradient(135deg,#ffedd5,#fff7ed);
 color:#1f2937;
 }
 
-/* HEADER */
 header{
 background: linear-gradient(90deg,#f97316,#fb923c);
 color:white;
 text-align:center;
-padding:45px;
+padding:40px;
 }
 
-header h1{
-margin:0;
-font-size:42px;
-}
-
-/* SECTION */
 section{
 background:white;
 margin:20px auto;
 padding:20px;
 width:92%;
-max-width:950px;
+max-width:900px;
 border-left:6px solid #f97316;
 border-radius:14px;
 box-shadow:0 6px 18px rgba(0,0,0,0.1);
 }
 
-/* BOX */
-div{
-background:#fff7ed;
-border-left:4px solid #fb923c;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-}
-
-/* IMAGE */
 img{
 width:200px;
 border-radius:12px;
 border:3px solid #f97316;
 }
 
-/* QUIZ BAR */
 #quizBar{
 position:fixed;
 bottom:0;
@@ -62,13 +44,12 @@ left:0;
 right:0;
 background:#fff3e0;
 border-top:3px solid #f97316;
-padding:12px;
+padding:10px;
 display:flex;
 justify-content:space-between;
 font-weight:bold;
 }
 
-/* BUTTON */
 button{
 padding:10px;
 background:#f97316;
@@ -89,53 +70,27 @@ background:#ea580c;
 
 <header>
 <h1>STEM For All 🚀</h1>
-<p>Learn Smart • Think Fast • Grow Strong</p>
+<p>Learn Smart • Think Fast</p>
 </header>
 
 <section>
-<h2>📚 Mission</h2>
-<p>Free STEM education for students.</p>
-</section>
-
-<section>
 <h2>🧠 Math Tricks</h2>
-<div>23 × 11 = 253</div>
-<div>99² = 9801</div>
-<div>125 × 8 = 1000</div>
-<div>75² = 5625</div>
+<div>23×11=253</div>
+<div>99²=9801</div>
+<div>125×8=1000</div>
 </section>
 
 <section>
 <h2>📘 Differentiation</h2>
-<div>d(x^n)/dx = n·x^(n-1)</div>
-<div>d(sin x)/dx = cos x</div>
-<div>d(cos x)/dx = -sin x</div>
-<div>d(e^x)/dx = e^x</div>
-<div>d(ln x)/dx = 1/x</div>
-</section>
-
-<section>
-<h2>⚡ Physics</h2>
-<div>F = ma</div>
-<div>V = IR</div>
-<div>E = mc²</div>
-<div>KE = 1/2 mv²</div>
-</section>
-
-<section>
-<h2>🧪 Chemistry</h2>
-<div>PV = nRT</div>
-<div>pH = -log[H⁺]</div>
-<div>Molarity = moles/volume</div>
+<div>d(x^n)=n·x^(n-1)</div>
+<div>d(sin x)=cos x</div>
+<div>d(e^x)=e^x</div>
 </section>
 
 <section>
 <h2>👨‍💻 Founder</h2>
-
 <img src="Screenshot_2026-06-15-21-14-06-183.png">
-
-<h3 style="color:#f97316;">Bhuwan Singh Rajawat</h3>
-<p>Student • Teacher • STEM Enthusiast</p>
+<p><b>Bhuwan Singh Rajawat</b></p>
 </section>
 
 <!-- QUIZ BAR -->
@@ -146,16 +101,28 @@ background:#ea580c;
 
 <script>
 
+let quiz = [
+"23 × 11 = 253",
+"d(x²)/dx = 2x",
+"99² = 9801",
+"125 × 8 = 1000"
+];
+
 let time = 30;
 let score = 0;
+let i = 0;
 let ended = false;
-let started = false;
 
-/* TIMER START ON FIRST USER ACTION */
-function startQuiz(){
-if(started) return;
-started = true;
+/* LOAD QUIZ (SAFE) */
+function loadQuiz(){
+if(i < quiz.length){
+document.getElementById("score").innerText = "Score: " + score;
+}else{
+endQuiz();
+}
+}
 
+/* TIMER START */
 let timer = setInterval(()=>{
 if(ended) return;
 
@@ -163,11 +130,11 @@ time--;
 document.getElementById("timer").innerText = "Time: " + time;
 
 if(time <= 0){
-endQuiz(timer);
+endQuiz();
 }
 },1000);
 
-/* SCROLL DETECTION */
+/* SCROLL END (SAFE) */
 window.addEventListener("scroll",()=>{
 if(ended) return;
 
@@ -177,25 +144,23 @@ let docHeight = document.body.scrollHeight - window.innerHeight;
 let percent = (scrollTop / docHeight) * 100;
 
 if(percent > 90){
-endQuiz(timer);
+endQuiz();
 }
 });
-}
 
-/* END QUIZ */
-function endQuiz(timer){
-
+/* END QUIZ (NO BUG) */
+function endQuiz(){
 if(ended) return;
-ended = true;
 
+ended = true;
 clearInterval(timer);
 
 document.getElementById("timer").innerText = "🏁 Quiz Ended";
 document.getElementById("score").innerText = "Final Score: " + score;
 }
 
-/* AUTO START */
-window.onload = startQuiz;
+/* START */
+loadQuiz();
 
 </script>
 
